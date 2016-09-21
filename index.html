@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Video Player</title>
+    <link rel="icon" type="image/png" href="img/fav_icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <div id="video-container">
+        <!-- Video -->
+        <video id="video">
+          <source src="video/video.mp4" type="video/mp4">
+          <source src="video/video.ogg" type="video/ogg">
+          <p>
+            Your browser doesn't support HTML5 video.
+          </p>
+
+        </video>
+        <!-- Video Controls -->
+        <div id="video-controls">
+          <!-- play/pause -->
+            <div id="play-pause"><i class="fa fa-play"></i></div>
+            <!-- timeline -->
+            <input type="range" id="seek-bar" value="0">
+            <!-- mute -->
+            <div id="mute"><i class="fa fa-volume-off"></i></div>
+            <!-- volume -->
+            <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+            <!-- full screen -->
+            <div id="full-screen"><i class="fa fa-arrows-alt"></i></div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/118dbd8455.js"></script>
+    <script src='js/application.js' type="text/javascript">
+
+    </script>
+</body>
+
+</html>
