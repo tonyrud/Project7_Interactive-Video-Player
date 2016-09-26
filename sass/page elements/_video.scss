@@ -2,7 +2,8 @@
   Video
 */
 #video-container {
-  width: 700px;
+  max-width: 700px;
+  width: 75%;
   margin: 0 auto;
 
   #video {
@@ -12,42 +13,150 @@
   }
 }
 
+.playhead {
+  cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  bottom: 12px;
+  width: 100%;
+  height: 20px;
+  align-items: center;
+  transition: all .3s ease-in-out;
+
+
+  #progress-background {
+    height: 4px;
+    // border-radius: 1em;
+  	width: 100%;
+    background: #eee;
+    display: inline-block;
+    padding: 0px;
+    margin: 0 auto;
+
+    #progress-over{
+      height: 4px;
+      background: $orange;
+      width: 0%;
+      // border-radius: 1em;
+    }
+  }
+}
+
 #video-controls {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
   z-index: 1000;
   margin: 0 auto;
   position: relative;
-  bottom: 40px;
+  bottom: 20px;
   width: 100%;
   height: 40px;
-  background: $mainFontColor;
+  background: $controlsColor;
   // opacity: 0;
-  transition: all .3s ease ;
+  transition: all .3s .1s ease-in-out;
 
   div {
-    width: 50px;
-    padding: 10px;
     display: inline-block;
+    margin: 0 5px;
+    position: relative;
+  }
+
+  #leftControls {
+    align-items: center;
+    display: inline-block;
+    margin-right: auto;
+
+    #time {
+      position:relative;
+      top: -5px;
+      // width: 400px;
+      color: $white;
+      font-family: $fontFam ;
+      font-weight: 700;
+
+
+      .timeTxt {
+        display: inline-block;
+      }
+    }
+  }
+
+  #rightControls {
+    // background: black;
+    width: 30%;
+
+    #volume {
+      width: 40%;
+      bottom: 5px;
+    }
+
+    #cc {
+      cursor: pointer;
+      position: relative;
+      top:3px;
+    }
+  }
+
+
+  #play-pause {
     cursor: pointer;
+    margin: 0 15px;
+
+    img {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  #volume-background {
+    cursor: pointer;
+    height: 8px;
+    // position: absolute;
+    border-radius: 2em;
+  	width: 100%;
+    background: #eee;
+    // display: inline-block;
+    padding: 0px;
+    margin: 0 auto;
+    // bottom: 60px;
+    // right: 20px;
+    // display: none;
+
+
+    #volume-over {
+      height: 100%;
+      background: $orange;
+      width: 100%;
+      border-radius: 1em;
+      display: block;
+      right: 5px;
+    }
+  }
+
+  #mute {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+  }
+
+  #full-screen {
+    cursor: pointer;
+    position: relative;
+    top: 2px;
     color: $background;
   }
-  #play-pause {
-    // width: 50px;
-    // padding: 10px;
-    // height: 25px;
-  }
-  #seek-bar {
-  	width: 360px;
-  }
-
-  #volume-bar {
-  	width: 60px;
-  }
 }
 
-#video-container:hover > #video-controls{
-  opacity: 1;
+#mute:hover + #volume-background {
+  display: inline-block;
 }
+
+// #video-container:hover > #video-controls{
+//   opacity: 1;
+//   bottom: 60px;
+// }
+
+// #video-container:hover > .playhead{
+//   bottom: 60px;
+// }
