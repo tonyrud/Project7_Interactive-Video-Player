@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: "Roboto Slab", serif; }
 
 /*
   Video
@@ -35,6 +36,12 @@
     .playhead #progress-background #progress-over {
       height: 4px;
       background: #ff9900;
+      width: 0%;
+      position: absolute;
+      bottom: 8px; }
+    .playhead #progress-background #buffer-bar {
+      height: 4px;
+      background: #cccccc;
       width: 0%; }
 
 #video-controls {
@@ -51,19 +58,36 @@
   #video-controls div {
     display: inline-block;
     margin: 0 5px;
-    position: relative; }
+    position: relative;
+    cursor: pointer; }
   #video-controls #leftControls {
     align-items: center;
     display: inline-block;
-    margin-right: auto; }
+    margin-right: auto;
+    width: 40%; }
+    #video-controls #leftControls #play-pause {
+      cursor: pointer;
+      margin: 0 5px; }
+      #video-controls #leftControls #play-pause img {
+        position: relative;
+        top: 2px; }
     #video-controls #leftControls #time {
-      position: relative;
-      top: -5px;
+      position: absolute;
+      top: 2px;
       color: #fff;
-      font-family: "Roboto Slab", serif;
-      font-weight: 700; }
+      cursor: auto;
+      width: 50%;
+      font-size: 1em; }
+      #video-controls #leftControls #time #slash {
+        width: 5%; }
       #video-controls #leftControls #time .timeTxt {
-        display: inline-block; }
+        display: inline-block;
+        width: 30%;
+        text-align: center; }
+    #video-controls #leftControls #speed {
+      color: #fff;
+      top: -5px;
+      left: 45%; }
   #video-controls #rightControls {
     width: 30%; }
     #video-controls #rightControls #volume {
@@ -73,12 +97,6 @@
       cursor: pointer;
       position: relative;
       top: 3px; }
-  #video-controls #play-pause {
-    cursor: pointer;
-    margin: 0 15px; }
-    #video-controls #play-pause img {
-      position: relative;
-      top: 2px; }
   #video-controls #volume-background {
     cursor: pointer;
     height: 8px;
@@ -107,11 +125,16 @@
 #mute:hover + #volume-background {
   display: inline-block; }
 
-#subtitles {
+#transcript {
   max-width: 700px;
   width: 75%;
   margin: 0 auto;
   color: #444;
-  font-family: "Roboto Slab", serif; }
+  font-family: "Roboto Slab", serif;
+  font-size: 1.2em;
+  cursor: pointer; }
+
+.highlight {
+  color: #ff9900; }
 
 /*# sourceMappingURL=styles.css.map */
