@@ -1,0 +1,38 @@
+
+#video-controls {
+  opacity: 1;
+  @include moveTranstion($transitionWhat, $transitionSpeed, $transitionDelay, $transitionStyle);
+  bottom: 45px;
+
+  @include mQuery(mobile) {
+    opacity: 0;
+    bottom: 20px;
+  }
+}
+
+.playhead {
+
+  @include moveTranstion($transitionWhat, $transitionSpeed, $transitionDelay, $transitionStyle);
+    // transition: all .4s .3s ease-in-out;
+  bottom: 37px;
+    @include mQuery(mobile) {
+      bottom: 12px;
+    }
+}
+
+
+ #video-container:hover > #video-controls {
+  opacity: 1;
+  bottom: 45px;
+
+  @include mQuery(mobile) {
+    bottom: 60px;
+  }
+}
+
+ #video-container:hover > .playhead {
+   @include mQuery(mobile) {
+     bottom: 52px;
+   }
+  bottom: 37px;
+ }

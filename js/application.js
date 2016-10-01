@@ -2,16 +2,16 @@
     'use strict';
 
     /**** Notes ****
-    responsive design
-    change video speed
+    make buttons smaller on mobile
+    vtt position
     */
-
 
     var video = document.getElementById("video");
     var transcriptLocation = document.getElementById("transcript");
 
     //Buttons
     var playButton = document.getElementById("play-pause");
+    var speedButton = document.getElementById("speed");
     var ccButton = document.getElementById("cc");
     var muteButton = document.getElementById("mute");
     var fullScreenButton = document.getElementById("full-screen");
@@ -21,10 +21,6 @@
     // Sliders
     var bufferBar = document.getElementById("buffer-bar");
     var seekBar = document.getElementById("progress-over");
-
-
-
-    showTime();
 
     var transcript_array = [{
         "start": "0.00",
@@ -89,12 +85,18 @@
     }, {
         "start": "57.79",
         "end": "60.0",
-        "text": "A few common residential modems are DSL or--"
+        "text": "A few common residential modems are..."
     }];
 
-    function load_transcript() {
-        var transcript;
-        for (var item in transcript_array) {
+
+
+    /*--------------------
+      Named Functions
+    --------------------*/
+
+    function loadTranscript() {
+        let transcript;
+        for (let item in transcript_array) {
             // create a span element
             transcript = document.createElement('span');
 
@@ -112,13 +114,40 @@
         }
     }
 
-    //create clickable transcript
-    load_transcript()
+    function showTime() {
+        let showCurrentTime = document.getElementById('current');
+        let showTotalTime = document.getElementById('total')
+            //time in seconds
+        let seconds = Math.round(video.currentTime);
+        //put zero in front if below 10 seconds
+        let str = (seconds < 10) ? '0' + seconds : seconds;
+        //set current time
+        showCurrentTime.innerHTML = "00:" + str;
+
+        //set total time
+        showTotalTime.innerHTML = Math.floor(video.duration) + ":00";
+    }
 
     function skip_to_text(e) {
         video.currentTime = e.target.id;
         video.play();
     }
+
+    function volumeChange(amount) {
+        let volumeOver = document.getElementById('volume-over')
+        volumeOver.style.width = amount + "%";
+        // Update the video volume
+        video.volume = amount / 100;
+    }
+
+
+    /*--------------------
+      Click Events
+    --------------------*/
+
+    video.addEventListener('click', e => {
+        playButton.click();
+    });
 
     // Player controls functions
     playButton.addEventListener('click', e => {
@@ -130,7 +159,21 @@
             video.pause();
             playButton.firstChild.src = 'icons/play-icon.png';
         }
-    })
+    });
+
+    speedButton.addEventListener('click', e => {
+        console.log(speedButton.innerHTML);
+        if (speedButton.innerHTML === '1x') {
+            video.playbackRate = 2;
+            video.play();
+
+            speedButton.innerHTML = '2x';
+        } else {
+            video.playbackRate = 1;
+            video.play();
+            speedButton.innerHTML = '1x';
+        }
+    });
 
     ccButton.addEventListener('click', e => {
         if (video.textTracks[0].mode === "showing") {
@@ -158,17 +201,8 @@
 
     });
 
-
-    function volumeChange(amount) {
-        var volumeOver = document.getElementById('volume-over')
-        volumeOver.style.width = amount + "%";
-        // Update the video volume
-        video.volume = amount / 100;
-    }
-
     volumeBar.addEventListener("click", e => {
-
-        var click = (e.layerX / volumeBar.clientWidth) * 100;
+        let click = (e.layerX / volumeBar.clientWidth) * 100;
         volumeChange(click);
     });
 
@@ -185,34 +219,20 @@
     // Event listener for the seek bar
     seekBarBG.addEventListener("click", e => {
         // Calculate the new time
-        var click = (e.layerX) / seekBarBG.clientWidth;
-        var current = click * video.duration;
+        let click = (e.layerX) / seekBarBG.clientWidth;
+        let current = click * video.duration;
 
         // Update the video time
         video.currentTime = current;
 
     });
 
-    function showTime() {
-        var showCurrentTime = document.getElementById('current');
-        var showTotalTime = document.getElementById('total')
-            //time in seconds
-        var seconds = Math.round(video.currentTime);
-        //put zero in front if below 10 seconds
-        var str = (seconds < 10) ? '0' + seconds : seconds;
-        //set current time
-        showCurrentTime.innerHTML = "00:" + str;
-
-        //set total time
-        showTotalTime.innerHTML = Math.floor(video.duration) + ":00";
-    }
-
     // Update the seek bar as the video plays
     video.addEventListener("timeupdate", e => {
 
         // Calculate the progress bars
-        var valueProgress = Math.floor((100 / video.duration) * video.currentTime);
-        var bufferProgress = (100 / video.duration) * video.buffered.end(0);
+        let valueProgress = Math.floor((100 / video.duration) * video.currentTime);
+        let bufferProgress = (100 / video.duration) * video.buffered.end(0);
 
         // Update the slider values with css
         bufferBar.style.width = bufferProgress + "%";
@@ -222,7 +242,7 @@
         showTime();
 
         //add highlight classes
-        for (var item in transcript_array) {
+        for (let item in transcript_array) {
             document.getElementById(transcript_array[item].start).classList.remove('highlight');
 
             if (video.currentTime >= transcript_array[item].start && video.currentTime <= transcript_array[item].end) {
@@ -246,6 +266,7 @@
         video.play();
     });
 
-
+    showTime();
+    loadTranscript();
 
 })();

@@ -2,9 +2,24 @@
   Video
 */
 #video-container {
-  max-width: 700px;
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
+
+  @include mQuery(mobile) {
+    max-width: 700px;
+    width: 75%;
+  }
+
+  h1 {
+    color: $mainFontColor;
+    text-align: center;
+    display: none;
+
+    @include mQuery(mobile) {
+      display: block;
+    }
+  }
+
 
   #video {
     width: 100%;
@@ -18,16 +33,15 @@
   display: flex;
   margin: 0 auto;
   position: relative;
-  bottom: 12px;
+  bottom: 52px;
   width: 100%;
   height: 20px;
   align-items: center;
-  transition: all .3s ease-in-out;
+
 
 
   #progress-background {
     height: 4px;
-    // border-radius: 1em;
   	width: 100%;
     background: #eee;
     display: inline-block;
@@ -56,12 +70,16 @@
   z-index: 1000;
   margin: 0 auto;
   position: relative;
-  bottom: 20px;
+  bottom: 45px;
   width: 100%;
-  height: 40px;
+  height: 25px;
   background: $controlsColor;
-  // opacity: 0;
-  transition: all .3s .1s ease-in-out;
+
+  @include mQuery(mobile) {
+    height: 40px;
+    bottom: 60px;
+  };
+
 
   div {
     display: inline-block;
@@ -71,29 +89,45 @@
   }
 
   #leftControls {
+    @include mQuery(mobile) {
+      // left: 45%;
+    }
+
     align-items: center;
     display: inline-block;
     margin-right: auto;
-    width: 40%;
+    width: 200px;
 
     #play-pause {
       cursor: pointer;
       margin: 0 5px;
 
+      width: 16px;
+
+      @include mQuery(mobile) {
+        width: 20px;
+      }
+
       img {
         position: relative;
         top: 2px;
+        width: 100%
       }
     }
 
     #time {
       position:absolute;
       top: 2px;
-      // width: 400px;
       color: $white;
       cursor: auto;
-      width: 50%;
-      font-size: 1em;
+      width: 120px;
+      font-size: $fontSmallScreen;
+
+      @include mQuery(mobile) {
+        top: 2px;
+        font-size: $fontMedium / 1.2;
+        width: 120px;
+      }
 
       #slash {
         width: 5%;
@@ -106,26 +140,47 @@
       }
     }
 
+
     #speed {
       color: $white;
-      top: -5px;
-      left: 45%;
+      top: -2px;
+      left: 50%;
+      font-size: $fontSmallScreen;
+
+      @include mQuery(mobile) {
+        top: -1px;
+        font-size: $fontMedium / 1.2;
+      }
     }
   }
 
   #rightControls {
-    // background: black;
-    width: 30%;
+    @include mQuery(mobile) {
+      width: 210px;
+    }
+
+    width: 140px;
 
     #volume {
       width: 40%;
-      bottom: 5px;
+      bottom: 3px;
+
+
     }
 
     #cc {
       cursor: pointer;
       position: relative;
       top:3px;
+      width: 16px;
+
+      @include mQuery(mobile) {
+        width: 20px;
+      }
+
+      img {
+        width: 100%;
+      }
     }
   }
 
@@ -150,28 +205,34 @@
   }
 
   #mute {
+
     cursor: pointer;
     position: relative;
     top: 2px;
+    width: 16px;
+
+    @include mQuery(mobile) {
+      width: 20px;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 
   #full-screen {
+    @include mQuery(mobile) {
+      display: inline-block;
+      width: 20px;
+    }
+    img {
+      width: 100%;
+    }
+
+    display: none;
     cursor: pointer;
     position: relative;
     top: 2px;
     color: $background;
   }
 }
-
-#mute:hover + #volume-background {
-  display: inline-block;
-}
-
-// #video-container:hover > #video-controls{
-//   opacity: 1;
-//   bottom: 60px;
-// }
-
-// #video-container:hover > .playhead{
-//   bottom: 60px;
-// }

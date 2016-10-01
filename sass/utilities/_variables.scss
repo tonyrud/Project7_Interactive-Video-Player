@@ -4,9 +4,10 @@ $background        : #ddd;
 $white             : #fff;
 $mainFontColor     : #444;
 $orange      : #ff9900;
-$controlsColor     : rgba(0, 0, 0, .25);
+$controlsColor     : rgba(0, 0, 0, .45);
 
 //Font variables
+$fontSmallScreen   : .75em;
 $fontMedium        : 1.2em;
 $fontLarge         : 2em;
 $fontFam           : 'Roboto Slab', serif;
@@ -14,3 +15,9 @@ $fontFam           : 'Roboto Slab', serif;
 // Media query breakpoints
 $break-narrow      : 768px;
 $break-wide        : 1024px;
+
+//animation variables
+$transitionWhat: all;
+$transitionSpeed: .4s;
+$transitionDelay: .3s;
+$transitionStyle: ease-in-out;

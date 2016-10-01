@@ -8,9 +8,19 @@
   Video
 */
 #video-container {
-  max-width: 700px;
-  width: 75%;
+  width: 100%;
   margin: 0 auto; }
+  @media (min-width: 768px) {
+    #video-container {
+      max-width: 700px;
+      width: 75%; } }
+  #video-container h1 {
+    color: #444;
+    text-align: center;
+    display: none; }
+    @media (min-width: 768px) {
+      #video-container h1 {
+        display: block; } }
   #video-container #video {
     width: 100%;
     display: block;
@@ -21,11 +31,10 @@
   display: flex;
   margin: 0 auto;
   position: relative;
-  bottom: 12px;
+  bottom: 52px;
   width: 100%;
   height: 20px;
-  align-items: center;
-  transition: all .3s ease-in-out; }
+  align-items: center; }
   .playhead #progress-background {
     height: 4px;
     width: 100%;
@@ -50,11 +59,14 @@
   z-index: 1000;
   margin: 0 auto;
   position: relative;
-  bottom: 20px;
+  bottom: 45px;
   width: 100%;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.25);
-  transition: all .3s .1s ease-in-out; }
+  height: 25px;
+  background: rgba(0, 0, 0, 0.45); }
+  @media (min-width: 768px) {
+    #video-controls {
+      height: 40px;
+      bottom: 60px; } }
   #video-controls div {
     display: inline-block;
     margin: 0 5px;
@@ -64,20 +76,30 @@
     align-items: center;
     display: inline-block;
     margin-right: auto;
-    width: 40%; }
+    width: 200px; }
     #video-controls #leftControls #play-pause {
       cursor: pointer;
-      margin: 0 5px; }
+      margin: 0 5px;
+      width: 16px; }
+      @media (min-width: 768px) {
+        #video-controls #leftControls #play-pause {
+          width: 20px; } }
       #video-controls #leftControls #play-pause img {
         position: relative;
-        top: 2px; }
+        top: 2px;
+        width: 100%; }
     #video-controls #leftControls #time {
       position: absolute;
       top: 2px;
       color: #fff;
       cursor: auto;
-      width: 50%;
-      font-size: 1em; }
+      width: 120px;
+      font-size: 0.75em; }
+      @media (min-width: 768px) {
+        #video-controls #leftControls #time {
+          top: 2px;
+          font-size: 1em;
+          width: 120px; } }
       #video-controls #leftControls #time #slash {
         width: 5%; }
       #video-controls #leftControls #time .timeTxt {
@@ -86,17 +108,31 @@
         text-align: center; }
     #video-controls #leftControls #speed {
       color: #fff;
-      top: -5px;
-      left: 45%; }
+      top: -2px;
+      left: 50%;
+      font-size: 0.75em; }
+      @media (min-width: 768px) {
+        #video-controls #leftControls #speed {
+          top: -1px;
+          font-size: 1em; } }
   #video-controls #rightControls {
-    width: 30%; }
+    width: 140px; }
+    @media (min-width: 768px) {
+      #video-controls #rightControls {
+        width: 210px; } }
     #video-controls #rightControls #volume {
       width: 40%;
-      bottom: 5px; }
+      bottom: 3px; }
     #video-controls #rightControls #cc {
       cursor: pointer;
       position: relative;
-      top: 3px; }
+      top: 3px;
+      width: 16px; }
+      @media (min-width: 768px) {
+        #video-controls #rightControls #cc {
+          width: 20px; } }
+      #video-controls #rightControls #cc img {
+        width: 100%; }
   #video-controls #volume-background {
     cursor: pointer;
     height: 8px;
@@ -115,26 +151,67 @@
   #video-controls #mute {
     cursor: pointer;
     position: relative;
-    top: 2px; }
+    top: 2px;
+    width: 16px; }
+    @media (min-width: 768px) {
+      #video-controls #mute {
+        width: 20px; } }
+    #video-controls #mute img {
+      width: 100%; }
   #video-controls #full-screen {
+    display: none;
     cursor: pointer;
     position: relative;
     top: 2px;
     color: #ddd; }
-
-#mute:hover + #volume-background {
-  display: inline-block; }
+    @media (min-width: 768px) {
+      #video-controls #full-screen {
+        display: inline-block;
+        width: 20px; } }
+    #video-controls #full-screen img {
+      width: 100%; }
 
 #transcript {
   max-width: 700px;
   width: 75%;
-  margin: 0 auto;
+  margin: -44px auto;
   color: #444;
-  font-family: "Roboto Slab", serif;
-  font-size: 1.2em;
+  font-size: 0.975em;
   cursor: pointer; }
+  @media (min-width: 768px) {
+    #transcript {
+      font-size: 1.2em; } }
 
 .highlight {
   color: #ff9900; }
+
+#video-controls {
+  opacity: 1;
+  transition: all 0.4s 0.3s ease-in-out;
+  bottom: 45px; }
+  @media (min-width: 768px) {
+    #video-controls {
+      opacity: 0;
+      bottom: 20px; } }
+
+.playhead {
+  transition: all 0.4s 0.3s ease-in-out;
+  bottom: 37px; }
+  @media (min-width: 768px) {
+    .playhead {
+      bottom: 12px; } }
+
+#video-container:hover > #video-controls {
+  opacity: 1;
+  bottom: 45px; }
+  @media (min-width: 768px) {
+    #video-container:hover > #video-controls {
+      bottom: 60px; } }
+
+#video-container:hover > .playhead {
+  bottom: 37px; }
+  @media (min-width: 768px) {
+    #video-container:hover > .playhead {
+      bottom: 52px; } }
 
 /*# sourceMappingURL=styles.css.map */

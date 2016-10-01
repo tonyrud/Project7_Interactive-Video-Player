@@ -1,0 +1,16 @@
+// media query mixin
+@mixin mQuery($break) {
+  @if $break == mobile {
+    @media (min-width: $break-narrow) {
+       @content;
+     }
+  }  @else if $break == desktop {
+    @media (min-width: $break-wide){
+      @content
+    }
+  }
+}
+
+@mixin moveTranstion($what, $speed, $delay, $style) {
+  transition: $what $speed $delay $style;
+}
