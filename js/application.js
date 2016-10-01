@@ -1,11 +1,6 @@
 (function() {
     'use strict';
 
-    /**** Notes ****
-    make buttons smaller on mobile
-    vtt position
-    */
-
     var video = document.getElementById("video");
     var transcriptLocation = document.getElementById("transcript");
 
@@ -116,7 +111,7 @@
 
     function showTime() {
         let showCurrentTime = document.getElementById('current');
-        let showTotalTime = document.getElementById('total')
+        let showTotalTime = document.getElementById('total');
             //time in seconds
         let seconds = Math.round(video.currentTime);
         //put zero in front if below 10 seconds
@@ -134,7 +129,7 @@
     }
 
     function volumeChange(amount) {
-        let volumeOver = document.getElementById('volume-over')
+        let volumeOver = document.getElementById('volume-over');
         volumeOver.style.width = amount + "%";
         // Update the video volume
         video.volume = amount / 100;
@@ -180,7 +175,7 @@
             ccButton.firstChild.src = 'icons/cc-icon-off.png';
             video.textTracks[0].mode = "hidden";
         } else {
-            video.textTracks[0].mode = "showing"
+            video.textTracks[0].mode = "showing";
             ccButton.firstChild.src = 'icons/cc-icon.png';
 
         }
