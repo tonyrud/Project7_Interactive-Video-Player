@@ -261,7 +261,7 @@
         video.play();
     });
 
-    showTime();
+    video.addEventListener('loadedmetadata', showTime());
     loadTranscript();
 
 })();
