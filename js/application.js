@@ -111,16 +111,13 @@
 
     function showTime() {
         let showCurrentTime = document.getElementById('current');
-        let showTotalTime = document.getElementById('total');
-            //time in seconds
+
+        //time in seconds
         let seconds = Math.round(video.currentTime);
         //put zero in front if below 10 seconds
         let str = (seconds < 10) ? '0' + seconds : seconds;
         //set current time
         showCurrentTime.innerHTML = "00:" + str;
-
-        //set total time
-        showTotalTime.innerHTML = Math.floor(video.duration) + ":00";
     }
 
     function skip_to_text(e) {
@@ -261,7 +258,14 @@
         video.play();
     });
 
-    video.addEventListener('loadedmetadata', showTime());
+    //set total duration time, after metadata is loaded
+    video.addEventListener('loadeddata', function(){
+      let showTotalTime = document.getElementById('total');
+      showTotalTime.innerHTML = Math.floor(video.duration) + ":00";
+    });
+
+
+    showTime();
     loadTranscript();
 
 })();
