@@ -1,8 +1,11 @@
-(function() {
+// (function() {
     'use strict';
 
     var video = document.getElementById("video");
     var transcriptLocation = document.getElementById("transcript");
+    var container = document.getElementById('video-container');
+    var controls = document.getElementsByClassName('video-controls');
+    var playhead = document.getElementsByClassName('playhead');
 
     //Buttons
     var playButton = document.getElementById("play-pause");
@@ -141,6 +144,24 @@
         playButton.click();
     });
 
+    container.addEventListener('mouseenter', e => {
+
+      controls[0].classList.remove('video-controls-animate');
+      playhead[0].classList.remove('playhead-animate');
+
+      //.classList.add('highlight');
+    }
+  );
+
+    container.addEventListener('mouseleave', e => {
+
+      controls[0].classList.add('video-controls-animate');
+      playhead[0].classList.add('playhead-animate');
+
+      //.classList.add('highlight');
+    }
+  );
+
     // Player controls functions
     playButton.addEventListener('click', e => {
         if (video.paused === true) {
@@ -268,4 +289,4 @@
     showTime();
     loadTranscript();
 
-})();
+// })();

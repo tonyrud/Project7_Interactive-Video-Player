@@ -54,7 +54,7 @@
       background: #cccccc;
       width: 0%; }
 
-#video-controls {
+.video-controls {
   display: flex;
   align-items: center;
   z-index: 1000;
@@ -65,31 +65,31 @@
   height: 25px;
   background: rgba(0, 0, 0, 0.45); }
   @media (min-width: 768px) {
-    #video-controls {
+    .video-controls {
       height: 40px;
       bottom: 60px; } }
-  #video-controls div {
+  .video-controls div {
     display: inline-block;
     margin: 0 5px;
     position: relative;
     cursor: pointer; }
-  #video-controls #leftControls {
+  .video-controls #leftControls {
     align-items: center;
     display: inline-block;
     margin-right: auto;
     width: 200px; }
-    #video-controls #leftControls #play-pause {
+    .video-controls #leftControls #play-pause {
       cursor: pointer;
       margin: 0 5px;
       width: 16px; }
       @media (min-width: 768px) {
-        #video-controls #leftControls #play-pause {
+        .video-controls #leftControls #play-pause {
           width: 20px; } }
-      #video-controls #leftControls #play-pause img {
+      .video-controls #leftControls #play-pause img {
         position: relative;
         top: 2px;
         width: 100%; }
-    #video-controls #leftControls #time {
+    .video-controls #leftControls #time {
       position: absolute;
       top: 2px;
       color: #fff;
@@ -97,44 +97,44 @@
       width: 120px;
       font-size: 0.75em; }
       @media (min-width: 768px) {
-        #video-controls #leftControls #time {
+        .video-controls #leftControls #time {
           top: 2px;
           font-size: 1em;
           width: 120px; } }
-      #video-controls #leftControls #time #slash {
+      .video-controls #leftControls #time #slash {
         width: 5%; }
-      #video-controls #leftControls #time .timeTxt {
+      .video-controls #leftControls #time .timeTxt {
         display: inline-block;
         width: 30%;
         text-align: center; }
-    #video-controls #leftControls #speed {
+    .video-controls #leftControls #speed {
       color: #fff;
       top: -2px;
       left: 50%;
       font-size: 0.75em; }
       @media (min-width: 768px) {
-        #video-controls #leftControls #speed {
+        .video-controls #leftControls #speed {
           top: -1px;
           font-size: 1em; } }
-  #video-controls #rightControls {
+  .video-controls #rightControls {
     width: 140px; }
     @media (min-width: 768px) {
-      #video-controls #rightControls {
+      .video-controls #rightControls {
         width: 210px; } }
-    #video-controls #rightControls #volume {
+    .video-controls #rightControls #volume {
       width: 40%;
       bottom: 3px; }
-    #video-controls #rightControls #cc {
+    .video-controls #rightControls #cc {
       cursor: pointer;
       position: relative;
       top: 3px;
       width: 16px; }
       @media (min-width: 768px) {
-        #video-controls #rightControls #cc {
+        .video-controls #rightControls #cc {
           width: 20px; } }
-      #video-controls #rightControls #cc img {
+      .video-controls #rightControls #cc img {
         width: 100%; }
-  #video-controls #volume-background {
+  .video-controls #volume-background {
     cursor: pointer;
     height: 8px;
     border-radius: 2em;
@@ -142,35 +142,38 @@
     background: #eee;
     padding: 0px;
     margin: 0 auto; }
-    #video-controls #volume-background #volume-over {
+    .video-controls #volume-background #volume-over {
       height: 100%;
       background: #ff9900;
       width: 100%;
       border-radius: 1em;
       display: block;
       right: 5px; }
-  #video-controls #mute {
+  .video-controls #mute {
     cursor: pointer;
     position: relative;
     top: 2px;
     width: 16px; }
     @media (min-width: 768px) {
-      #video-controls #mute {
+      .video-controls #mute {
         width: 20px; } }
-    #video-controls #mute img {
+    .video-controls #mute img {
       width: 100%; }
-  #video-controls #full-screen {
+  .video-controls #full-screen {
     display: none;
     cursor: pointer;
     position: relative;
     top: 2px;
     color: #ddd; }
     @media (min-width: 768px) {
-      #video-controls #full-screen {
+      .video-controls #full-screen {
         display: inline-block;
         width: 20px; } }
-    #video-controls #full-screen img {
+    .video-controls #full-screen img {
       width: 100%; }
+
+#transcript-container {
+  margin-top: 1em; }
 
 #transcript {
   max-width: 700px;
@@ -186,12 +189,20 @@
 .highlight {
   color: #ff9900; }
 
-#video-controls {
+.video-controls {
   opacity: 1;
   transition: all 0.4s 0.3s ease-in-out;
   bottom: 45px; }
   @media (min-width: 768px) {
-    #video-controls {
+    .video-controls {
+      opacity: 1;
+      bottom: 60px; } }
+
+.video-controls-animate {
+  opacity: 1;
+  bottom: 45px; }
+  @media (min-width: 768px) {
+    .video-controls-animate {
       opacity: 0;
       bottom: 20px; } }
 
@@ -200,19 +211,12 @@
   bottom: 37px; }
   @media (min-width: 768px) {
     .playhead {
-      bottom: 12px; } }
+      bottom: 52px; } }
 
-#video-container:hover > #video-controls {
-  opacity: 1;
-  bottom: 45px; }
-  @media (min-width: 768px) {
-    #video-container:hover > #video-controls {
-      bottom: 60px; } }
-
-#video-container:hover > .playhead {
+.playhead-animate {
   bottom: 37px; }
   @media (min-width: 768px) {
-    #video-container:hover > .playhead {
-      bottom: 52px; } }
+    .playhead-animate {
+      bottom: 12px; } }
 
 /*# sourceMappingURL=styles.css.map */
