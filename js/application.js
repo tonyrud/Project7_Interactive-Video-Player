@@ -1,4 +1,4 @@
-// (function() {
+(function() {
     'use strict';
 
     var video = document.getElementById("video");
@@ -289,4 +289,4 @@
     showTime();
     loadTranscript();
 
-// })();
+})();
